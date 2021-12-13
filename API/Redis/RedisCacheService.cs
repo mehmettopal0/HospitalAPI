@@ -1,4 +1,4 @@
-﻿using Business.Abstract;
+﻿
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,12 +10,10 @@ namespace API.Redis
     public class RedisCacheService : ICacheService
     {
         private RedisServer _redisServer;
-        private IEmployeeService _employeeService;
 
-        public RedisCacheService(RedisServer redisServer, IEmployeeService employeeService)
+        public RedisCacheService(RedisServer redisServer)
         {
             _redisServer = redisServer;
-            _employeeService = employeeService;
         }
 
         public void Add(string key, object data)

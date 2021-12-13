@@ -1,10 +1,5 @@
 ﻿using API.Authentication;
 using API.Redis;
-using Business.Abstract;
-using Business.Concrete;
-using DataAccess;
-using DataAccess.Abstract;
-using DataAccess.Concrete;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,14 +49,14 @@ namespace API
             //services.AddDbContext<WebApiDbContext>(options =>
             //         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSingleton<ICategoryService, CategoryManager>();
-            services.AddSingleton<ICategoryDal, EfCategoryDal>();
-            services.AddSingleton<IProductService, ProductManager>();
-            services.AddSingleton<IProductDal, EfProductDal>();
-            services.AddSingleton<IUserService, UserManager>();
-            services.AddSingleton<IUserDal, EfUserDal>();
-            services.AddSingleton<IEmployeeService, EmployeeManager>();
-            services.AddSingleton<IEmployeeDal, EfEmployeeDal>();
+            //services.AddSingleton<ICategoryService, CategoryManager>();
+            //services.AddSingleton<ICategoryDal, EfCategoryDal>();
+            //services.AddSingleton<IProductService, ProductManager>();
+            //services.AddSingleton<IProductDal, EfProductDal>();
+            //services.AddSingleton<IUserService, UserManager>();
+            //services.AddSingleton<IUserDal, EfUserDal>();
+            //services.AddSingleton<IEmployeeService, EmployeeManager>();
+            //services.AddSingleton<IEmployeeDal, EfEmployeeDal>();
             
 
             //var multiplexer = ConnectionMultiplexer.Connect(new ConfigurationOptions
