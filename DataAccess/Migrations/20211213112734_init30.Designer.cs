@@ -4,14 +4,16 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(WebApiDbContext))]
-    partial class WebApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211213112734_init30")]
+    partial class init30
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,29 +136,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Prescriptions");
                 });
 
-            modelBuilder.Entity("Entities.PrescriptionMedicine", b =>
-                {
-                    b.Property<int>("PrescriptionMedicineId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("MedicineId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PrescriptionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PrescriptionMedicineId");
-
-                    b.HasIndex("MedicineId")
-                        .IsUnique();
-
-                    b.HasIndex("PrescriptionId");
-
-                    b.ToTable("PrescriptionMedicines");
-                });
-
             modelBuilder.Entity("Entities.Appointment", b =>
                 {
                     b.HasOne("Entities.Doctor", "Doctor")
@@ -194,21 +173,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Appointment");
                 });
 
-            modelBuilder.Entity("Entities.PrescriptionMedicine", b =>
-                {
-                    b.HasOne("Entities.Medicine", "Medicine")
-                        .WithOne("PrescriptionMedicine")
-                        .HasForeignKey("Entities.PrescriptionMedicine", "MedicineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Prescription", null)
-                        .WithMany("PrescriptionMedicines")
-                        .HasForeignKey("PrescriptionId");
-
-                    b.Navigation("Medicine");
-                });
-
             modelBuilder.Entity("Entities.Appointment", b =>
                 {
                     b.Navigation("Prescription");
@@ -221,19 +185,9 @@ namespace DataAccess.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("Entities.Medicine", b =>
-                {
-                    b.Navigation("PrescriptionMedicine");
-                });
-
             modelBuilder.Entity("Entities.Patient", b =>
                 {
                     b.Navigation("Appointment");
-                });
-
-            modelBuilder.Entity("Entities.Prescription", b =>
-                {
-                    b.Navigation("PrescriptionMedicines");
                 });
 #pragma warning restore 612, 618
         }
